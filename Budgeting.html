@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Budgeting</title>
+      <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/button.css" rel="stylesheet">
+</head>
+<body class="index-page" style="background-color: #000000f5;">
+    <header id="header" class="header d-flex align-items-center fixed-top" style="background-color: #000000b2;">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    
+          <a href="index.html" class="logo d-flex align-items-center me-auto">
+    
+            <h1 class="sitename">BILL MANAGER</h1>
+          </a>
+    
+          <nav id="navmenu" class="navmenu">
+            <ul>
+              <li><a href="index.html" class="">Home</a></li>
+              <li><a href="electricity.HTML">Electricity</a></li>
+              <li><a href="Budgeting.html">Budgeting</a></li>
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+          </nav>
+    
+    
+        </div>
+      </header>
+      <main class="main">
+        <section style="margin-top: 3%; background-image: url('assets/img/skills.jpg');background-size:100% 150%;">
+    <h2 style = "margin-left:500px">Budgeting</h2>
+    <form id="billForm" style="margin-left:50px";>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br><br>
+
+        <label for="currentBill">Current bill (Rs):</label>
+        <input type="number" id="currentBill" required><br><br>
+
+        <label for="chargesPerUnit">Current Charges (Rs/Unit):</label>
+        <input type="number" id="chargesPerUnit"value="10" required><br><br>
+
+        <label for="desiredBill">Desired Bill (Rs):</label>
+        <input type="number" id="desiredBill" required><br><br>
+        
+        <button class="btn-53" type = "button" onclick="calculate()" style="margin-top: 30px; margin-bottom: 50px;">
+          <div class="original">calculate</div>
+          <div class="letters">
+            
+            <span>C</span>
+            <span>A</span>
+            <span>L</span>
+            <span>C</span>
+            <span>U</span>
+            <span>L</span>
+            <span>A</span>
+            <span>T</span>
+            <span>E</span>
+          </div>
+        </button>
+    </form>
+</section>
+
+    <h3 style ="margin:20px;">Output:</h3>
+    <div style="margin-left:20px;" id="output"></div>
+</main>
+<footer id="footer" class="footer">
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">BILL MANAGER</strong> <span>All Rights Reserved</span></p>
+    </div>
+
+  </footer>
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+  
+
+    <script>
+        function calculate() 
+        {
+            const name = document.getElementById('name').value;
+            const currentBill = parseFloat(document.getElementById('currentBill').value);
+            const chargesPerUnit = parseFloat(document.getElementById('chargesPerUnit').value);
+            const desiredBill = parseFloat(document.getElementById('desiredBill').value);
+
+            const currentUnits = currentBill / chargesPerUnit;
+            const desiredUnits = desiredBill / chargesPerUnit;
+
+            const dailyUsageCurrent = currentUnits / 30;
+            const dailyUsageDesired = desiredUnits / 30;
+
+            const monthlyUsageCurrent = currentUnits;
+            const monthlyUsageDesired = desiredUnits;
+
+            const percentageSaved = ((currentUnits - desiredUnits) / currentUnits) * 100;
+            
+            const output = `
+                <p>   Name: ${name}</p>
+                <p>   Units needed per day for desired bill: ${dailyUsageDesired.toFixed(2)} units</p>
+                <p>   Units needed per month for desired bill: ${monthlyUsageDesired.toFixed(2)} units</p>
+                <p>   Congratulations, ${name}! You are saving ${percentageSaved.toFixed(2)}% of your electricity usage. Thank you for your effort in conserving energy. By saving electricity, you are not only reducing your bill but also helping to protect the environment by reducing carbon emissions and conserving natural resources. Your actions contribute to a more sustainable and eco-friendly world!</p>
+            `;
+            
+            const output2 = `
+                <p>   Name: ${name}</p>
+                <p>   Units needed per day for desired bill: ${dailyUsageDesired.toFixed(2)} units</p>
+                <p>   Units needed per month for desired bill: ${monthlyUsageDesired.toFixed(2)} units</p>
+                <p>   ${name} , you are crossing your desired bill by ${(percentageSaved.toFixed(2))*-1}% of your electricity usage. You need to put more effort in conserving energy. By saving electricity, you are not only reducing your bill but also helping to protect the environment by reducing carbon emissions and conserving natural resources.</p>
+            `;
+            if(percentageSaved>=0){
+            document.getElementById('output').innerHTML = output;}
+            if(percentageSaved<0){
+              document.getElementById('output').innerHTML = output2;}
+        }
+    </script>
+
+</body>
+</html>

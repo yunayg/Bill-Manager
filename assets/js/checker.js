@@ -9,7 +9,7 @@ alert("Please fill all the fields");
 return false;
 }
 }
-function again_equired()
+function again_required()
 {
 var empt1 = document.forms["form1"]["text1"].value;
 var empt2 = document.forms["form1"]["text2"].value;

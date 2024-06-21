@@ -35,20 +35,20 @@
       <main class="main">
         <section style="margin-top: 3%; background-image: url('assets/img/skills.jpg');background-size:100% 150%;">
     <h2 style = "margin-left:500px">Budgeting</h2>
-    <form id="billForm" style="margin-left:50px";>
+    <form id="billForm" style="margin-left:50px;" name="form1" onsubmit="again_required()">
         <label for="name">Name:</label>
-        <input type="text" id="name" required><br><br>
+        <input type="text" id="name" name="text1" required><br><br>
 
         <label for="currentBill">Current bill (Rs):</label>
-        <input type="number" id="currentBill" required><br><br>
+        <input type="number" id="currentBill" name="text2" required><br><br>
 
         <label for="chargesPerUnit">Current Charges (Rs/Unit):</label>
-        <input type="number" id="chargesPerUnit"value="10" required><br><br>
+        <input type="number" id="chargesPerUnit" name="text3" value="10" required><br><br>
 
         <label for="desiredBill">Desired Bill (Rs):</label>
-        <input type="number" id="desiredBill" required><br><br>
+        <input type="number" id="desiredBill" name="text4" required><br><br>
         
-        <button class="btn-53" type = "button" onclick="calculate()" style="margin-top: 30px; margin-bottom: 50px;">
+        <button class="btn-53" type = "submit" onclick="calculate()" style="margin-top: 30px; margin-bottom: 50px;">
           <div class="original">calculate</div>
           <div class="letters">
             
@@ -91,6 +91,7 @@
   
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/checker.js"></script>
   
 
     <script>

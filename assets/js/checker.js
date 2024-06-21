@@ -5,7 +5,7 @@ var empt2 = document.forms["form1"]["text2"].value;
 var empt3 = document.forms["form1"]["text3"].value;
 if (empt1 == ""||empt2 == ""||empt3 == "")
 {
-alert("Please fill all the fields");
+alert("Invalid");
 return false;
 }
 }
@@ -17,7 +17,7 @@ var empt3 = document.forms["form1"]["text3"].value;
 var empt4 = document.forms["form1"]["text4"].value;
 if (empt1 == ""||empt2 == ""||empt3 == ""||empt4=="")
 {
-alert("Please fill all the fields");
+alert("Invalid");
 return false;
 }
 

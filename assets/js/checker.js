@@ -8,11 +8,6 @@ if (empt1 == ""||empt2 == ""||empt3 == "")
 alert("Please fill all the fields");
 return false;
 }
-else 
-{
-alert('Code has accepted : you can try another');
-return true; 
-}
 }
 function again_equired()
 {
@@ -25,9 +20,5 @@ if (empt1 == ""||empt2 == ""||empt3 == ""||empt4=="")
 alert("Please fill all the fields");
 return false;
 }
-else 
-{
-alert('Code has accepted : you can try another');
-return true; 
-}
+
 }
